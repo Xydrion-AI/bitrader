@@ -1,102 +1,170 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Sites meta Data -->
-    <meta name="application-name" content="Bitrader - Professional Multipurpose HTML Template for Your Crypto, Forex, and Stocks Trading Business">
-    <meta name="author" content="thetork">
-    <meta name="keywords" content="Bitrader, Crypto, Forex, and Stocks Trading Business">
-    <meta name="description" content="Experience the power of Bitrader, the ultimate HTML template designed to transform your trading business. With its sleek design and advanced features, Bitrader empowers you to showcase your expertise, engage clients, and dominate the markets. Elevate your online presence and unlock new trading possibilities with Bitrader.">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Sites meta Data -->
+		<meta name="application-name" content="Bitrader - Professional Multipurpose HTML Template for Your Crypto, Forex, and Stocks Trading Business">
+		<meta name="author" content="thetork">
+		<meta name="keywords" content="Bitrader, Crypto, Forex, and Stocks Trading Business">
+		<meta name="description" content="Experience the power of Bitrader, the ultimate HTML template designed to transform your trading business. With its sleek design and advanced features, Bitrader empowers you to showcase your expertise, engage clients, and dominate the markets. Elevate your online presence and unlock new trading possibilities with Bitrader.">
 
-    <title>{% block title %}Welcome!{% endblock %}</title>
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
 
-    {# On charge Bootstrap depuis /public/assets/css/bootstrap.min.css #}
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-    {#   (Si vous aviez un bloc stylesheets additionnels) #}
-    {% block stylesheets %}{% endblock %}
-    {# Puis votre style principal #}
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/aos.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
-</head>
-<body>
-    <!-- ===============>> Preloader start here <<================= -->
-    <div class="preloader">
-        <img src="{{ asset('assets/images/logo/preloader.png') }}" alt="preloader icon">
-    </div>
-    <!-- ===============>> Preloader end here <<================= -->
+		{# On charge Bootstrap depuis /public/assets/css/bootstrap.min.css #}
+		<link
+		rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+		{#   (Si vous aviez un bloc stylesheets additionnels) #}
+		{% block stylesheets %}{% endblock %}
+		{# Puis votre style principal #}
+		<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/css/aos.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
+		<link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
+	</head>
+	<body>
+		<!-- ===============>> Preloader start here <<================= -->
+		<div class="preloader">
+			<img src="{{ asset('assets/images/logo/preloader.png') }}" alt="preloader icon">
+		</div>
+		<!-- ===============>> Preloader end here <<================= -->
 
-    <!-- ===============>> light&dark switch start here <<================= -->
-    <div class="lightdark-switch">
-        <span class="dark-btn" id="btnSwitch">
-            <img src="{{ asset('assets/images/icon/moon.svg') }}" alt="light-dark-switchbtn" class="swtich-icon">
-        </span>
-    </div>
-    <!-- ===============>> light&dark switch end here <<================= -->
+		<!-- ===============>> light&dark switch start here <<================= -->
+		<div class="lightdark-switch">
+			<span class="dark-btn" id="btnSwitch">
+				<img src="{{ asset('assets/images/icon/moon.svg') }}" alt="light-dark-switchbtn" class="swtich-icon">
+			</span>
+		</div>
+		<!-- ===============>> light&dark switch end here <<================= -->
 
-    <!-- ===============>> Header section start here <<================= -->
-    <header class="header-section bg-color-3">
-      <div class="header-bottom">
-        <div class="container">
-          <div class="header-wrapper">
-            <div class="logo">
-              <a href="/">
-                <img class="dark" src="{{ asset('assets/images/logo/logo.png') }}" alt="logo">
-              </a>
-            </div>
-            <div class="menu-area">
-              <ul class="menu menu--style1">
-                <!-- votre menu ici -->
-              </ul>
-            </div>
-            <div class="header-action">
-              <div class="menu-area">
-                <div class="header-btn">
-                  <a href="{{ path('app_register') }}" class="trk-btn trk-btn--border trk-btn--primary">
-                    <span>Join Now</span>
-                  </a>
-                </div>
-                <div class="header-bar d-lg-none home1">
-                  <span></span><span></span><span></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-    <!-- ===============>> Header section end here <<================= -->
+		<!-- ===============>> Header section start here <<================= -->
+		<header class="header-section bg-color-3">
+			<div class="header-bottom">
+				<div class="container">
+					<div class="header-wrapper">
+						<div class="logo">
+							<a href="/">
+								<img class="dark" src="{{ asset('assets/images/logo/logo.png') }}" alt="logo">
+							</a>
+						</div>
+						<div class="menu-area">
+							<ul class="menu menu--style1">
+							</li>
+							<li>
+								<a href="#0">Services</a>
+								<ul class="submenu">
+									<li>
+										<a href="services.html">Services</a>
+									</li>
+									<li>
+										<a href="service-details.html">Services Details</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#0">About</a>
+								<ul class="submenu">
+									<li>
+										<a href="about.html">About Us</a>
+									</li>
+									<li>
+										<a href="price.html">Price</a>
+									</li>
+									<li>
+										<a href="team.html">Team</a>
+									</li>
+									<li>
+										<a href="team-2.html">Team 2</a>
+									</li>
+									<li>
+										<a href="team-details.html">Team Details</a>
+									</li>
+								</ul>
+							</li>
 
-    {# C’est ici que les pages « enfants » injectent leur contenu #}
-    {% block body %}{% endblock %}
+							<li>
+								<a href="#0">Pages</a>
+								<ul class="submenu">
+									<li>
+										<a href="blogs.html">Blogs</a>
+									</li>
+									<li>
+										<a href="blog-sidebar.html">Blog - Side Bar</a>
+									</li>
+									<li>
+										<a href="blog-details.html">Blog Details</a>
+									</li>
+									<li>
+										<a href="signup.html">Sign Up</a>
+									</li>
+									<li>
+										<a href="signup-2.html">Sign Up 2</a>
+									</li>
+									<li>
+										<a href="signin.html">Sign In</a>
+									</li>
+									<li>
+										<a href="signin-2.html">Sign In 2</a>
+									</li>
+									<li>
+										<a href="forgot-pass.html">Reset Password</a>
+									</li>
+									<li>
+										<a href="forgot-pass-2.html">Reset Password 2</a>
+									</li>
+									<li>
+										<a href="404.html">404 Error</a>
+									</li>
+								</ul>
 
-    <!-- ===============>> Footer section start here <<================= -->
-    <footer class="footer brand-1">
-      <div class="container">
-        <div class="footer__wrapper">
-          <!-- … votre HTML de footer identique … -->
-          <div class="footer__shape">
-            <span class="footer__shape-item footer__shape-item--1">
-              <img src="{{ asset('assets/images/footer/1.png') }}" alt="shape icon">
-            </span>
-            <span class="footer__shape-item footer__shape-item--2"><span></span></span>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- ===============>> Footer section end here <<================= -->
+							</li>
+							<li>
+								<a href="contact.html">Contact Us</a>
+							</li>
+						</ul>
 
-    {# Enfin les scripts JS #}
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/js/all.min.js') }}"></script>
-    <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/js/aos.js') }}"></script>
-    <script src="{{ asset('assets/js/fslightbox.js') }}"></script>
-    <script src="{{ asset('assets/js/purecounter_vanilla.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
-</body>
-</html>
+					</div>
+					<div class="header-action">
+						<div class="menu-area">
+							<div class="header-btn">
+								<a href="{{ path('app_register') }}" class="trk-btn trk-btn--border trk-btn--primary">
+									<span>Join Now</span>
+								</a>
+							</div>
+							<div class="header-bar d-lg-none home1">
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html></header><!-- ===============>> Header section end here <<================= -->{# C’est ici que les pages « enfants » injectent leur contenu #}</body><body>{% for flash in app.flashes('success') %}
+<div class="alert alert-success">
+	{{ flash }}
+</div>{% endfor %}{% for flash in app.flashes('error') %}
+<div class="alert alert-danger">
+	{{ flash }}
+</div>{% endfor %}{% for flash in app.flashes('danger') %}
+<div class="alert alert-danger">{{ flash }}</div>{% endfor %}{% block body %}{% endblock %}</body><!-- ===============>> Footer section start here <<================= --><footer class="footer brand-1"><div class="container">
+<div
+	class="footer__wrapper">
+	<!-- … votre HTML de footer identique … -->
+	<div class="footer__shape">
+		<span class="footer__shape-item footer__shape-item--1">
+			<img src="{{ asset('assets/images/footer/1.png') }}" alt="shape icon">
+		</span>
+		<span class="footer__shape-item footer__shape-item--2">
+			<span></span>
+		</span>
+	</div>
+</div></div></footer><!-- ===============>> Footer section end here <<================= -->{# Enfin les scripts JS #}<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script><script src="{{ asset('assets/js/all.min.js') }}"></script><script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script><script src="{{ asset('assets/js/aos.js') }}"></script><script src="{{ asset('assets/js/fslightbox.js') }}"></script><script src="{{ asset('assets/js/purecounter_vanilla.js') }}"></script><script src="{{ asset('assets/js/custom.js') }}"></script></html></body></html>
