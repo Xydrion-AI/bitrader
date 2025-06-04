@@ -19,37 +19,28 @@ security:
             security: false
 
         main:
-            pattern: ^/       
             # 3.1. FORM LOGIN — affiche le formulaire sur GET /login et traite le POST sur /login
             form_login:
-                login_path: app_login      # doit correspondre à #[Route(path:'/login', name:'login')]
-                check_path: app_login      # Symfony traitera le POST pour authentifier l'utilisateur
+                login_path: app_login
+                check_path: app_login
                 enable_csrf: true
 
             # 3.2. LOGOUT — Symfony supprime la session sur /logout et redirige ensuite
             logout:
                 path: app_logout           # doit correspondre à #[Route(path:'/logout', name:'logout')]
-                target: /login         # redirige vers /login après déconnexion
-
-            # 3.3. Notez :
-            #      - On ENLÈVE totalement "anonymous" ou "lazy" ici.
-            #      - Par défaut, Symfony autorise l'anonyme sur les firewalls qui comportent un mécanisme d’authentification.
-            #      - Vous n’avez donc rien d’autre à mettre pour autoriser /login à être publique.
+                target: app_home
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800 # 1 semaine      
 
             provider: app_user_provider
 
-    # 4) Contrôle d’accès (order = important !)
+    # 4) Contrôle d’accès (order = important !) 
     access_control:
-        # 4.1. PREMIÈRE règle : /login doit être ouverte à TOUS (anonymes inclus)
-        - { path: ^/login,    roles: PUBLIC_ACCESS }
+        - { path: ^/register, roles: PUBLIC_ACCESS }
+        - { path: ^/login$, roles: PUBLIC_ACCESS }
+        - { path: ^/verify, roles: PUBLIC_ACCESS }
 
-        # 4.2. Si vous avez une page /register, ouvrez‐la aussi (sinon commentez)
-        # - { path: ^/register,  roles: IS_AUTHENTICATED_ANONYMOUSLY }
-
-        # 4.3. Tout ce qui commence par / exige ROLE_USER (donc utilisateur connecté)
-        # - { path: ^/,     roles: ROLE_USER }
-
-        # (Si vous aviez d’autres domaines à protéger, ajoutez‐les ici, toujours APRÈS /login)
 
 when@test:
     security:
