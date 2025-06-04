@@ -1,0 +1,42 @@
+{# templates/partials/_navbar.html.twig #}
+<nav class="menu-area">
+
+	<ul class="menu menu--style1">
+		<li>
+			<a href="#0">Services</a>
+			<ul class="submenu">
+				<li>
+					<a href="{{ path('services') }}">Services</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#0">About</a>
+			<ul class="submenu">
+				<li>
+					<a href="{{ path('about') }}">About Us</a>
+				</li>
+				<li>
+					<a href="{{ path('price') }}">Price</a>
+				</li>
+				<li>
+					<a href="{{ path('team') }}">Team</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#0">Pages</a>
+			<ul class="submenu">
+				<li>
+					<a href="{{ path('blogs') }}">Blogs</a>
+				</li>
+				<li>
+					<a href="{{ path('blog_sidebar') }}">Blog - Side Bar</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="{{ path('contact') }}">Contact Us</a>
+		</li>
+	</ul>
+</nav>

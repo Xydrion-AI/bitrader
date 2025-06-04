@@ -1,0 +1,107 @@
+{# templates/pages/blog/blog-sidebar.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog - Side Bar
+{% endblock %}
+
+{% block body %}
+	<section class="page-header bg--cover" style="background-image:url({{ asset('assets/images/header/1.png') }})">
+		<div class="container">
+			<div class="page-header__content" data-aos="fade-right" data-aos-duration="1000">
+				<h2>Blog - Side Bar</h2>
+				<nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+					<ol class="breadcrumb mb-0">
+						<li class="breadcrumb-item">
+							<a href="{{ path('app_home') }}">Home</a>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">Blog - Side Bar</li>
+					</ol>
+				</nav>
+			</div>
+			<div class="page-header__shape">
+				<span class="page-header__shape-item page-header__shape-item--1">
+					<img src="{{ asset('assets/images/header/2.png') }}" alt="shape-icon">
+				</span>
+			</div>
+		</div>
+	</section>
+
+	<div class="blog padding-top padding-bottom section-bg-color">
+		<div class="container">
+			<div class="blog__wrapper">
+				<div class="row g-5">
+					<div class="col-lg-8">
+						<div
+							class="row g-4">
+							{# Exemple de 3 blocs d'articles, à adapter selon les données dynamiques plus tard #}
+							<div class="col-sm-6">
+								<div class="blog__item">
+									<div class="blog__item-inner blog__item-inner--style2">
+										<div class="blog__thumb">
+											<img src="{{ asset('assets/images/blog/1.png') }}" alt="blog Images">
+										</div>
+										<div class="blog__content">
+											<div class="blog__meta">
+												<span class="blog__meta-tag blog__meta-tag--style1">Forex trading</span>
+											</div>
+											<h5 class="10 style2">
+												<a href="{{ path('blog_details') }}">online trading for beginners</a>
+											</h5>
+											<p class="mb-15">Lorem ipsum dolor sit amet, suspendisse semper amet lectus...</p>
+											<div class="blog__writer">
+												<div class="blog__writer-thumb">
+													<img src="{{ asset('assets/images/blog/author/1.png') }}" alt="writer">
+												</div>
+												<div class="blog__writer-designation">
+													<p>Senturk Yasar</p>
+													<span>Mar 25, 2023</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							{# ... (copier-coller d’autres blocs si besoin) #}
+						</div>
+
+						<div class="paginations" data-aos="fade-up" data-aos-duration="800">
+							<ul class="lab-ul d-flex flex-wrap justify-content-center mb-1">
+								<li>
+									<a href="#">
+										<i class="fa-solid fa-angle-left me-2"></i>
+										Prev</a>
+								</li>
+								<li>
+									<a href="#" class="active">1</a>
+								</li>
+								<li>
+									<a href="#">2</a>
+								</li>
+								<li>
+									<a href="#">3</a>
+								</li>
+								<li>
+									<a href="#" class="dot">...</a>
+								</li>
+								<li>
+									<a href="#">12</a>
+								</li>
+								<li>
+									<a href="#">Next
+										<i class="fa-solid fa-angle-right ms-2"></i>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-8 col-12">
+						{% include 'partials/blog/_sidebar.html.twig' %}
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

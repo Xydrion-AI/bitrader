@@ -1,0 +1,104 @@
+{# templates/partials/blog/_sidebar.html.twig #}
+<div class="sidebar">
+	<div class="sidebar__search mb-4">
+		<h6>Search Here</h6>
+		<form action="#">
+			<div class="input">
+				<input type="text" class="form-control" placeholder="Search articles">
+				<button type="submit" class="search-btn">
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="sidebar__categorie mb-4">
+		<h6>Categories</h6>
+		<ul>
+			<li>
+				<a href="#">Large-cap stocks</a>
+				<span>2</span>
+			</li>
+			<li>
+				<a href="#">Value stocks</a>
+				<span>4</span>
+			</li>
+			<li>
+				<a href="#">IPO stocks</a>
+				<span>3</span>
+			</li>
+			<li>
+				<a href="#">Dividend stocks</a>
+				<span>5</span>
+			</li>
+			<li>
+				<a href="#">Non-dividend stocks</a>
+				<span>1</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="sidebar__recentpost mb-4">
+		<h6>Recent Posts</h6>
+		<ul>
+			<li>
+				<a href="#">
+					<img src="{{ asset('assets/images/blog/recent/1.png') }}" alt="recent">
+					Real Estate Investing
+				</a>
+				<span>Dec 22, 2023</span>
+			</li>
+			<li>
+				<a href="#">
+					<img src="{{ asset('assets/images/blog/recent/2.png') }}" alt="recent">
+					Technical analysis
+				</a>
+				<span>July 28, 2023</span>
+			</li>
+			<li>
+				<a href="#">
+					<img src="{{ asset('assets/images/blog/recent/3.png') }}" alt="recent">
+					Trading risk tolerance
+				</a>
+				<span>May 18, 2023</span>
+			</li>
+			<li>
+				<a href="#">
+					<img src="{{ asset('assets/images/blog/recent/4.png') }}" alt="recent">
+					Harmonic price pattern
+				</a>
+				<span>Feb 16, 2023</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="sidebar__tags">
+		<h6>Popular Tags</h6>
+		<ul class="tags tags--style2">
+			<li>
+				<a href="#" class="active">Analysis</a>
+			</li>
+			<li>
+				<a href="#">Research</a>
+			</li>
+			<li>
+				<a href="#">Mentoring</a>
+			</li>
+			<li>
+				<a href="#">Strategy</a>
+			</li>
+			<li>
+				<a href="#">Planning</a>
+			</li>
+			<li>
+				<a href="#">Business</a>
+			</li>
+			<li>
+				<a href="#">Leadership</a>
+			</li>
+			<li>
+				<a href="#">Management</a>
+			</li>
+		</ul>
+	</div>
+</div>

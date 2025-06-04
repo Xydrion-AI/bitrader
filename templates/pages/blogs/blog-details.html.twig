@@ -1,0 +1,46 @@
+{# templates/pages/blog/blog-details.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog Details - Bitrader
+{% endblock %}
+
+{% block body %}
+	<section class="page-header bg--cover" style="background-image:url({{ asset('assets/images/header/1.png') }})">
+		<div class="container">
+			<div class="page-header__content" data-aos="fade-right" data-aos-duration="1000">
+				<h2>Blog Details</h2>
+				<nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+					<ol class="breadcrumb mb-0">
+						<li class="breadcrumb-item">
+							<a href="{{ path('app_home') }}">Home</a>
+						</li>
+						<li class="breadcrumb-item">
+							<a href="{{ path('blogs') }}">Blog</a>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">Blog Details</li>
+					</ol>
+				</nav>
+			</div>
+			<div class="page-header__shape">
+				<span class="page-header__shape-item page-header__shape-item--1">
+					<img src="{{ asset('assets/images/header/2.png') }}" alt="shape-icon">
+				</span>
+			</div>
+		</div>
+	</section>
+
+	<div class="blog-details padding-top padding-bottom section-bg-color">
+		<div class="container">
+			<div class="blog-details__wrapper">
+				<div class="row g-5">
+					<div class="col-lg-8">
+						{% include 'partials/blog/_details_content.html.twig' %}
+					</div>
+					<div class="col-lg-4 col-md-8 col-12">
+						{% include 'partials/blog/_sidebar.html.twig' %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

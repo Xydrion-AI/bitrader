@@ -1,0 +1,57 @@
+{# templates/pages/services/service-details.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Service Details - Bitrader
+{% endblock %}
+
+{% block body %}
+	<section class="page-header bg--cover" style="background-image:url({{ asset('assets/images/header/1.png') }})">
+		<div class="container">
+			<div class="page-header__content" data-aos="fade-right" data-aos-duration="1000">
+				<h2>Service Details</h2>
+				<nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+					<ol class="breadcrumb mb-0">
+						<li class="breadcrumb-item">
+							<a href="/">Home</a>
+						</li>
+						<li class="breadcrumb-item">
+							<a href="{{ path('services') }}">Services</a>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">Details</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</section>
+
+	<section class="service-details padding-top padding-bottom">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<div class="service-details__wrapper">
+						<div class="service-details__thumb mb-4">
+							<img src="{{ asset('assets/images/service/details.jpg') }}" alt="Service Details" class="img-fluid rounded">
+						</div>
+						<div class="service-details__content">
+							<h3 class="mb-3">Professional Investment Planning</h3>
+							<p class="mb-3">
+								Our Investment Planning service is designed to help individuals and businesses set realistic financial goals and build a strategic path to achieve them.
+								                With years of market experience, our experts craft personalized investment strategies tailored to your risk tolerance and expected returns.
+							</p>
+							<p class="mb-3">
+								From retirement planning to wealth accumulation, we provide continuous support and tools to monitor performance and make adjustments as the market evolves.
+							</p>
+							<h5 class="mt-4">What you’ll get:</h5>
+							<ul class="list-style--arrow">
+								<li>Custom financial assessment and strategy</li>
+								<li>Access to diversified investment portfolios</li>
+								<li>Ongoing expert advice and performance reviews</li>
+								<li>Full transparency and risk management tools</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
