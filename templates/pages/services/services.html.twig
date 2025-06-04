@@ -1,0 +1,57 @@
+{# templates/pages/services/services.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Our Services - Bitrader
+{% endblock %}
+
+{% block body %}
+	<section class="page-header bg--cover" style="background-image:url({{ asset('assets/images/header/1.png') }})">
+		<div class="container">
+			<div class="page-header__content" data-aos="fade-right" data-aos-duration="1000">
+				<h2>Our Services</h2>
+				<nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+					<ol class="breadcrumb mb-0">
+						<li class="breadcrumb-item">
+							<a href="/">Home</a>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">Services</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</section>
+
+	<section class="service padding-top padding-bottom">
+		<div class="container">
+			<div class="section-header text-center">
+				<h2 class="mb-15">Explore our
+					<span>Services</span>
+				</h2>
+				<p>Discover how Bitrader can enhance your trading strategies with our professional solutions.</p>
+			</div>
+			<div class="row g-4">
+				{% for service in [
+          { 'icon': '1.png', 'title': 'Investment Planning', 'desc': 'We help you build a secure financial future with smart planning.', 'route': 'service_details' },
+          { 'icon': '2.png', 'title': 'Market Analysis', 'desc': 'Gain insights with detailed and actionable market reports.', 'route': 'service_details' },
+          { 'icon': '3.png', 'title': 'Trading Support', 'desc': 'Our experts are here to support your trades with real-time advice.', 'route': 'service_details' }
+        ] %}
+					<div class="col-md-6 col-lg-4">
+						<div class="service__item" data-aos="fade-up" data-aos-duration="1000">
+							<div class="service__item-inner text-center">
+								<div class="service__item-thumb">
+									<img src="{{ asset('assets/images/service/' ~ service.icon) }}" alt="service-icon">
+								</div>
+								<div class="service__item-content">
+									<h5 class="mb-15">
+										<a href="{{ path('service_details') }}">{{ service.title }}</a>
+									</h5>
+									<p class="mb-0">{{ service.desc }}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

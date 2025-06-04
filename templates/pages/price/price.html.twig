@@ -1,0 +1,70 @@
+{# templates/price/price.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Pricing - Bitrader
+{% endblock %}
+
+{% block body %}
+	<section class="page-header bg--cover" style="background-image:url({{ asset('assets/images/header/1.png') }})">
+		<div class="container">
+			<div class="page-header__content" data-aos="fade-right" data-aos-duration="1000">
+				<h2>Pricing</h2>
+				<nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+					<ol class="breadcrumb mb-0">
+						<li class="breadcrumb-item">
+							<a href="/">Home</a>
+						</li>
+						<li class="breadcrumb-item active" aria-current="page">Pricing</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</section>
+
+	<section class="pricing padding-top padding-bottom">
+		<div class="section-header section-header--max50">
+			<h2 class="mb-15 mt-minus-5">Our
+				<span>pricings
+				</span>plan</h2>
+			<p>We offer the best pricings around - from installations to repairs, maintenance, and more!</p>
+		</div>
+		<div class="container">
+			<div class="row g-4 align-items-center">
+				{% for plan in [
+                        { 'name': 'Basic', 'price': 99, 'features': ['Weekly online meeting', 'Unlimited learning access', '24/7 technical support', 'Personal training'] },
+                        { 'name': 'Standard', 'price': 149, 'features': ['Weekly online meeting', 'Unlimited learning access', '24/7 technical support', 'Personal training', 'Business analysis'] },
+                        { 'name': 'Premium', 'price': 199, 'features': ['With all standard features', 'Unlimited learning access', '24/7 technical support', 'Personal training'] }
+                    ] %}
+					<div class="col-md-6 col-lg-4">
+						<div class="pricing__item" data-aos="fade-up" data-aos-duration="1000">
+							<div class="pricing__item-inner {% if plan.name == 'Standard' %}active{% endif %}">
+								<div class="pricing__item-content">
+									<div class="pricing__item-top">
+										<h6 class="mb-15">{{ plan.name }}</h6>
+										<h3 class="mb-25">${{ plan.price }}/<span>Monthly</span>
+										</h3>
+									</div>
+									<div class="pricing__item-middle">
+										<ul class="pricing__list">
+											{% for feature in plan.features %}
+												<li class="pricing__list-item">
+													<span><img src="{{ asset('assets/images/icon/check.svg') }}" alt="check" class="dark"></span>
+													{{ feature }}
+												</li>
+											{% endfor %}
+										</ul>
+									</div>
+									<div class="pricing__item-bottom">
+										<a href="{{ path('app_register') }}" class="trk-btn trk-btn--outline{% if plan.name == 'Standard' %} active{% endif %}">Choose Plan</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	{# You can optionally extract testimonial and CTA as partials if reused #}
+{% endblock %}

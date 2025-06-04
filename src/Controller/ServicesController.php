@@ -8,10 +8,18 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ServicesController extends AbstractController
 {
-    #[Route('/services', name: 'app_services')]
-    public function index(): Response
+    #[Route('/services', name: 'services')]
+    public function services(): Response
     {
-        return $this->render('pages/services/index.html.twig', [
+        return $this->render('pages/services/services.html.twig', [
+            'controller_name' => 'ServicesController',
+        ]);
+    }
+
+    #[Route('/services/details', name: 'service_details')]
+    public function serviceDetails(): Response
+    {
+        return $this->render('pages/services/service-details.html.twig', [
             'controller_name' => 'ServicesController',
         ]);
     }

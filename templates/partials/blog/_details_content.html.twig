@@ -1,0 +1,129 @@
+{# templates/partials/blog/_details_content.html.twig #}
+<div class="blog-details__item">
+	<div class="blog-details__item-inner">
+		<div class="blog-details__thumb">
+			<img src="{{ asset('assets/images/blog/details/1.png') }}" alt="blog-image">
+		</div>
+		<div class="blog-details__content">
+			<h3>Advantages of Day Trading</h3>
+			<div class="blog-details__meta">
+				<ul>
+					<li><img src="{{ asset('assets/images/blog/icon/1.png') }}" alt="user">
+						Mobarok Hossain</li>
+					<li><img src="{{ asset('assets/images/blog/icon/2.png') }}" alt="date">
+						April 25, 2023</li>
+					<li>
+						<a href="#"><img src="{{ asset('assets/images/blog/icon/3.png') }}" alt="comments">
+							4 Comments</a>
+					</li>
+				</ul>
+			</div>
+			<p>Lorem ipsum dolor sit amet consectetur. At sed amet viverra etiam elit vivamus ultrices pharetra...</p>
+		</div>
+
+		<div class="blog-details__segment">
+			<div class="row gy-4">
+				<div class="col-xl-6">
+					<img src="{{ asset('assets/images/blog/details/2.png') }}" alt="segment">
+				</div>
+				<div class="col-xl-6">
+					<h5>Short-term investment</h5>
+					<p>Looking to make some quick cash in the market? Short-term investments might be just the ticket...</p>
+				</div>
+				<div class="col-xl-6">
+					<h5>Long-term investment</h5>
+					<p>If you're looking to make some serious cash, a long-term investment is definitely the way to go...</p>
+				</div>
+				<div class="col-xl-6">
+					<img src="{{ asset('assets/images/blog/details/3.png') }}" alt="segment">
+				</div>
+			</div>
+		</div>
+
+		<div class="blog-details__action">
+			<div class="blog-details__tag">
+				<h6>Tags</h6>
+				<ul class="tags tags--style2">
+					<li>
+						<a href="#" class="active">trading</a>
+					</li>
+					<li>
+						<a href="#">investor</a>
+					</li>
+				</ul>
+			</div>
+			<div class="blog-details__social">
+				<h6>Share</h6>
+				<ul class="social">
+					<li>
+						<a href="#" class="social__link active">
+							<i class="fab fa-facebook-f"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="social__link">
+							<i class="fab fa-instagram"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="social__link">
+							<i class="fab fa-linkedin-in"></i>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="social__link">
+							<i class="fab fa-youtube"></i>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="blog-details__comment">
+			<h3>Comments</h3>
+			<ul>
+				<li>
+					<div class="comment__author-thumb">
+						<img src="{{ asset('assets/images/blog/user/3.png') }}" alt="author">
+					</div>
+					<div class="comment__content">
+						<h6>Johanna Erika</h6>
+						<p>Great insights on day trading advantages. Thanks!</p>
+					</div>
+				</li>
+				<li>
+					<div class="comment__author-thumb">
+						<img src="{{ asset('assets/images/blog/user/1.png') }}" alt="author">
+					</div>
+					<div class="comment__content">
+						<h6>Tommy Reed</h6>
+						<p>Really enjoyed this post, well structured and clear.</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="blog-details__commentform pt-4">
+			<h3>Leave a Comment</h3>
+			<form action="#" method="post">
+				<div class="row g-4">
+					<div class="col-md-6">
+						<label for="name">Name</label>
+						<input id="name" name="name" class="form-control" required>
+					</div>
+					<div class="col-md-6">
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" class="form-control" required>
+					</div>
+					<div class="col-md-12">
+						<label for="message">Message</label>
+						<textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+					</div>
+					<div class="col-md-12">
+						<button class="trk-btn trk-btn--primary mt-2" type="submit">Send message</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
