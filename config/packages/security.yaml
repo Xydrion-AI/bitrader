@@ -1,29 +1,55 @@
+# config/packages/security.yaml
 security:
-    # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+    # 1) Hashage des mots de passe
     password_hashers:
-        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
-    # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+        App\Entity\User:
+            algorithm: auto
+
+    # 2) Chargement des utilisateurs depuis l'entité User
     providers:
-        users_in_memory: { memory: null }
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+
+    # 3) Configuration des firewalls
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
         main:
-            lazy: true
-            provider: users_in_memory
+            pattern: ^/       
+            # 3.1. FORM LOGIN — affiche le formulaire sur GET /login et traite le POST sur /login
+            form_login:
+                login_path: login      # doit correspondre à #[Route(path:'/login', name:'login')]
+                check_path: login      # Symfony traitera le POST pour authentifier l'utilisateur
+                enable_csrf: true
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#the-firewall
+            # 3.2. LOGOUT — Symfony supprime la session sur /logout et redirige ensuite
+            logout:
+                path: logout           # doit correspondre à #[Route(path:'/logout', name:'logout')]
+                target: /login         # redirige vers /login après déconnexion
 
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
+            # 3.3. Notez :
+            #      - On ENLÈVE totalement "anonymous" ou "lazy" ici.
+            #      - Par défaut, Symfony autorise l'anonyme sur les firewalls qui comportent un mécanisme d’authentification.
+            #      - Vous n’avez donc rien d’autre à mettre pour autoriser /login à être publique.
 
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
+            provider: app_user_provider
+
+    # 4) Contrôle d’accès (order = important !)
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        # 4.1. PREMIÈRE règle : /login doit être ouverte à TOUS (anonymes inclus)
+        - { path: ^/login,    roles: PUBLIC_ACCESS }
+
+        # 4.2. Si vous avez une page /register, ouvrez‐la aussi (sinon commentez)
+        # - { path: ^/register,  roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        # 4.3. Tout ce qui commence par /trade exige ROLE_USER (donc utilisateur connecté)
+        - { path: ^/trade,     roles: ROLE_USER }
+
+        # (Si vous aviez d’autres domaines à protéger, ajoutez‐les ici, toujours APRÈS /login)
 
 when@test:
     security:
