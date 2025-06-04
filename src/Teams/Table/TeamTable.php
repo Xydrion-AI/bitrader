@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Team\Table;
+namespace App\Teams\Table;
 
 class TeamTable
 {

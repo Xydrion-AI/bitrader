@@ -2,11 +2,11 @@
 
 use Phinx\Migration\AbstractMigration;
 
-final class Users extends AbstractMigration
+final class User extends AbstractMigration
 {
     public function change()
     {
-        $table = $this->table('users', ['id' => false, 'primary_key' => 'id']);
+        $table = $this->table('user', ['id' => false, 'primary_key' => 'id']);
         $table->addColumn('id', 'biginteger', ['signed' => false, 'identity' => true]) 
               ->addColumn('last_name', 'string', ['limit' => 100])
               ->addColumn('first_name', 'string', ['limit' => 100])

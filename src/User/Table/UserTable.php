@@ -1,6 +1,6 @@
 <?php
 
-namespace App\User\Tables;
+namespace App\Users\Table;
 
 class UserTable
 {
