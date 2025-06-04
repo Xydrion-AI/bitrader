@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello VerifyEmailController!
+{% endblock %}
+
+{% block body %}
+	{# templates/emails/registration_confirmation.html.twig #}
+	<h1>Hello
+		{{ user.firstName }}!</h1>
+
+	<p>
+		Thank you for registering. Please confirm your email address by clicking the link below:
+	</p>
+
+	<p>
+		<a href="{{ signedUrl|raw }}">Confirm my Email</a>
+	</p>
+
+	<p>
+		This link will expire in
+		{{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+	</p>
+
+	<p>
+		If you did not sign up, you can safely ignore this email.
+	</p>
+
+{% endblock %}

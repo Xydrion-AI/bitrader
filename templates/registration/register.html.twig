@@ -1,0 +1,167 @@
+{# templates/registration/register.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {# Display any email verification errors #}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger">{{ flash_error }}</div>
+    {% endfor %}
+
+    <!-- ===============>> account start here <<================= -->
+    <section class="account padding-top padding-bottom sec-bg-color2">
+      <div class="container">
+        <div class="account__wrapper" data-aos="fade-up" data-aos-duration="800">
+          <div class="row g-4">
+            <div class="col-12">
+              <div class="account__content account__content--style1">
+
+                <!-- account title -->
+                <div class="account__header">
+                  <h2>Create Your Account</h2>
+                  <p>Hey there! Ready to join the party? We just need a few details from you to get started. Let's do this!</p>
+                </div>
+
+                <!-- account social (if you want to keep your Google button) -->
+                <div class="account__social">
+                  <a href="#" class="account__social-btn">
+                    <span><img src="{{ asset('assets/images/others/google.svg') }}" alt="google icon"></span>
+                    Continue with Google
+                  </a>
+                </div>
+
+                <!-- account divider -->
+                <div class="account__divider account__divider--style1">
+                  <span>or</span>
+                </div>
+
+                {# Begin Symfony form #}
+                {{ form_start(registrationForm, {
+                    'attr': { 'class': 'account__form needs-validation', 'novalidate': 'novalidate' }
+                }) }}
+                  <div class="row g-4">
+                    {# First name #}
+                    <div class="col-12 col-md-6">
+                      <div>
+                        {{ form_label(registrationForm.firstName, 'First name', {
+                            'label_attr': { 'class': 'form-label', 'for': 'first-name' }
+                          }) 
+                        }}
+                        {{ form_widget(registrationForm.firstName, {
+                            'attr': {
+                              'class': 'form-control',
+                              'id': 'first-name',
+                              'placeholder': 'Ex. John'
+                            }
+                        }) }}
+                        {{ form_errors(registrationForm.firstName) }}
+                      </div>
+                    </div>
+
+                    {# Last name #}
+                    <div class="col-12 col-md-6">
+                      <div>
+                        {{ form_label(registrationForm.lastName, 'Last name', {
+                            'label_attr': { 'class': 'form-label', 'for': 'last-name' }
+                          }) 
+                        }}
+                        {{ form_widget(registrationForm.lastName, {
+                            'attr': {
+                              'class': 'form-control',
+                              'id': 'last-name',
+                              'placeholder': 'Ex. Doe'
+                            }
+                        }) }}
+                        {{ form_errors(registrationForm.lastName) }}
+                      </div>
+                    </div>
+
+                    {# Email #}
+                    <div class="col-12">
+                      <div>
+                        {{ form_label(registrationForm.email, 'Email', {
+                            'label_attr': { 'class': 'form-label', 'for': 'account-email' }
+                          }) 
+                        }}
+                        {{ form_widget(registrationForm.email, {
+                            'attr': {
+                              'class': 'form-control',
+                              'id': 'account-email',
+                              'placeholder': 'Enter your email'
+                            }
+                        }) }}
+                        {{ form_errors(registrationForm.email) }}
+                      </div>
+                    </div>
+
+                    {# Password #}
+                    <div class="col-12">
+                      <div class="form-pass">
+                        {{ form_label(registrationForm.plainPassword.first, 'Password', {
+                            'label_attr': { 'class': 'form-label', 'for': 'account-pass' }
+                          }) 
+                        }}
+                        {{ form_widget(registrationForm.plainPassword.first, {
+                            'attr': {
+                              'class': 'form-control showhide-pass',
+                              'id': 'account-pass',
+                              'placeholder': 'Password'
+                            }
+                        }) }}
+                        {{ form_errors(registrationForm.plainPassword.first) }}
+                        <button type="button" id="btnToggle" class="form-pass__toggle">
+                          <i id="eyeIcon1" class="fa fa-eye"></i>
+                        </button>
+                      </div>
+                    </div>
+
+                    {# Confirm Password #}
+                    <div class="col-12">
+                      <div class="form-pass">
+                        {{ form_label(registrationForm.plainPassword.second, 'Confirm Password', {
+                            'label_attr': { 'class': 'form-label', 'for': 'account-cpass' }
+                          }) 
+                        }}
+                        {{ form_widget(registrationForm.plainPassword.second, {
+                            'attr': {
+                              'class': 'form-control showhide-pass',
+                              'id': 'account-cpass',
+                              'placeholder': 'Re-type password'
+                            }
+                        }) }}
+                        {{ form_errors(registrationForm.plainPassword.second) }}
+                        <button type="button" id="btnCToggle" class="form-pass__toggle">
+                          <i id="eyeIcon2" class="fa fa-eye"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="trk-btn trk-btn--border trk-btn--primary d-block mt-4">
+                    Sign Up
+                  </button>
+                {{ form_end(registrationForm) }}
+                {# End Symfony form #}
+
+                <div class="account__switch">
+                  <p>Already have an account?
+                    <a href="{{ path('app_login') }}">Login</a>
+                  </p>
+                  <p>
+                    <a href="{{ path('app_forgot_password_request') }}">Forgot your password?</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="account__shape">
+        <span class="account__shape-item account__shape-item--1">
+          <img src="{{ asset('assets/images/contact/4.png') }}" alt="shape-icon">
+        </span>
+      </div>
+    </section>
+    <!-- ===============>> account end here <<================= -->
+{% endblock %}
