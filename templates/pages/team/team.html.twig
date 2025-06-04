@@ -36,31 +36,21 @@
 		<div class="container">
 			<div class="team__wrapper">
 				<div class="row g-4 align-items-center">
-					{% set teamMembers = [
-            { name: 'Dianne Russell', role: 'Trade Captain', image: '1.png' },
-            { name: 'Theresa Webb', role: 'Strategic Advisor', image: '2.png' },
-            { name: 'Courtney Henry', role: 'Management Consultant', image: '3.png' },
-            { name: 'Albert Flores', role: 'Development Specialist', image: '4.png' },
-            { name: 'Darrell Steward', role: 'Growth Strategist', image: '5.png' },
-            { name: 'Wade Warren', role: 'Trade Consultant', image: '6.png' },
-            { name: 'Cody Fisher', role: 'HR Consultant', image: '7.png' },
-            { name: 'Bessie Cooper', role: 'Financial Advisor', image: '8.png' }
-          ] %}
-
+					
 					{% for member in teamMembers %}
 						<div class="col-sm-6 col-lg-3">
 							<div class="team__item team__item--shape" data-aos="fade-up" data-aos-duration="{{ 800 + loop.index0 * 100 }}">
 								<div class="team__item-inner team__item-inner--shape">
 									<div class="team__item-thumb team__item-thumb--style1">
-										<img src="{{ asset('assets/images/team/' ~ member.image) }}" alt="Team Image" class="dark">
+										<img src="{{ member.picture }}" alt="Team Image" class="dark">
 									</div>
 									<div class="team__item-content team__item-content--style1">
 										<div class="team__item-author team__item-author--style1">
 											<div class="team__item-authorinfo">
 												<h6 class="mb-1">
-													<a href="{{ path('team_details') }}" class="stretched-link">{{ member.name }}</a>
+													<a href="{{ path('team_details', { id: member.id }) }}" class="stretched-link">{{ member.firstName }} {{ member.lastName }}</a>
 												</h6>
-												<p class="mb-0">{{ member.role }}</p>
+												<p class="mb-0">{{ member.title }}</p>
 											</div>
 										</div>
 									</div>
