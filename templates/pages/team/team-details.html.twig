@@ -35,16 +35,14 @@
 				<div class="row g-5 align-items-center">
 					<div class="col-md-5">
 						<div class="team__thumb">
-							<img src="{{ team.picture }}" alt="Team Image">
+							<img src="{{ asset(team.picture) }}" alt="Team Image" class="dark">
 						</div>
 					</div>
 					<div class="col-md-7">
 						<div class="team__content">
 							<h3>{{ team.firstName }} {{ team.lastName }}</h3>
 								<p class="designation">{{ team.title }}</p>
-								<p class="info">
-									{{ team.desciption }}
-								</p>
+								<p class="info">{{ team.desciption }}</p>
 							<ul class="social mt-30">
 								<li class="social__item">
 									<a href="#" class="social__link social__link--style2">

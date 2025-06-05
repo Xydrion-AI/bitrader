@@ -1,0 +1,26 @@
+{% block body %}
+
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <h2><span>Subscribe</span> our news</h2>
+    <p>Hey! Are you tired of missing out on our updates? Subscribe to our news now and stay in the loop!</p>
+
+    {{ form_start(form, {
+        'attr': {
+            'class': 'cta-form cta-form--style2 form-subscribe'
+        }
+    }) }}
+        <div class="cta-form__inner d-sm-flex align-items-center">
+            {{ form_row(form.email) }}
+            <button class="trk-btn trk-btn--large trk-btn--secondary2" type="submit">Submit</button>
+        </div>
+    {{ form_end(form) }}
+
+{% endblock %}

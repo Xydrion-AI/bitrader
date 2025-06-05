@@ -1207,16 +1207,7 @@
 							<img src="assets/images/cta/3.png" alt="cta-thumb">
 						</div>
 						<div class="cta__subscribe">
-							<h2>
-								<span>Subscribe</span>
-								our news</h2>
-							<p>Hey! Are you tired of missing out on our updates? Subscribe to our news now and stay in the loop!</p>
-							<form class="cta-form cta-form--style2 form-subscribe" action="#">
-								<div class="cta-form__inner d-sm-flex align-items-center">
-									<input type="email" class="form-control form-control--style2 mb-3 mb-sm-0" placeholder="Email Address">
-									<button class="trk-btn  trk-btn--large trk-btn--secondary2" type="submit">Submit</button>
-								</div>
-							</form>
+							{{ render(controller('App\\Controller\\NewsletterController::subscribe')) }}
 						</div>
 					</div>
 				</div>
