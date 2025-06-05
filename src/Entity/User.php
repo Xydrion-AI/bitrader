@@ -1,5 +1,4 @@
 <?php
-// src/Entity/User.php
 namespace App\Entity;
 
 use App\Repository\UserRepository;
@@ -27,7 +26,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'json')]
     private array $roles = ["ROLE_USER"];
 
     #[ORM\Column]
@@ -36,13 +35,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private bool $isVerified = false;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $picture = null;
+
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
-    // --- Getters & Setters ---
+    // === GETTERS & SETTERS ===
 
     public function getId(): ?int
     {
@@ -57,7 +59,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setFirstName(string $firstName): static
     {
         $this->firstName = $firstName;
-
         return $this;
     }
 
@@ -69,8 +70,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastName(string $lastName): static
     {
         $this->lastName = $lastName;
-
         return $this;
+    }
+
+    public function getFullName(): string
+    {
+        return $this->firstName . ' ' . $this->lastName;
     }
 
     public function getEmail(): ?string
@@ -81,7 +86,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): static
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -94,15 +98,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
     }
 
     public function setRoles(array $roles): static
     {
         $this->roles = $roles;
-
         return $this;
+    }
+
+    public function hasRole(string $role): bool
+    {
+        return in_array($role, $this->getRoles(), true);
+    }
+
+    public function isAuthor(): bool
+    {
+        return $this->hasRole('ROLE_AUTHOR');
     }
 
     public function getPassword(): ?string
@@ -113,13 +125,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): static
     {
         $this->password = $password;
-
         return $this;
     }
 
     public function eraseCredentials(): void
     {
-        // If you store temporary sensitive data, clear it here
+        // vider les données sensibles temporaires ici si besoin
     }
 
     public function isVerified(): bool
@@ -130,7 +141,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): static
     {
         $this->isVerified = $isVerified;
+        return $this;
+    }
 
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): static
+    {
+        $this->picture = $picture;
         return $this;
     }
 
@@ -144,11 +165,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->updatedAt;
     }
 
-    // === LIFECYCLE CALLBACKS ===
-
-    /**
-     * Avant l'insertion, fixer createdAt et updatedAt à la date courante
-     */
     #[ORM\PrePersist]
     public function onPrePersist(): void
     {
@@ -157,9 +173,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->updatedAt = $now;
     }
 
-    /**
-     * Avant chaque mise à jour, mettre à jour updatedAt
-     */
     #[ORM\PreUpdate]
     public function onPreUpdate(): void
     {

@@ -1,0 +1,10 @@
+{# templates/partials/blog/_author_card.html.twig #}
+<div class="blog__writer">
+	<div class="blog__writer-thumb">
+		<img src="{{ asset(blog.author.picture) }}" alt="{{ blog.author.getFullName() }}">
+	</div>
+	<div class="blog__writer-designation">
+		<p>{{ blog.author.getFullName() }}</p>
+		<span>{{ blog.createdAt|date('d M Y') }}</span>
+	</div>
+</div>

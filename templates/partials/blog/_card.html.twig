@@ -1,0 +1,25 @@
+<div class="blog__item">
+    <div class="blog__item-inner blog__item-inner--style2">
+        <div class="blog__thumb">
+            <img src="{{ asset(blog.picture) }}" alt="{{ blog.title }}">
+        </div>
+        <div class="blog__content">
+            <div class="blog__meta">
+                <span class="blog__meta-tag blog__meta-tag--style1">{{ blog.tags }}</span>
+            </div>
+            <h5 class="10 style2">
+                <a href="{{ path('blog_details', { slug: blog.slug }) }}">{{ blog.title }}</a>
+            </h5>
+            <p class="mb-15">{{ blog.description|slice(0, 100) ~ '...' }}</p>
+            <div class="blog__writer">
+                <div class="blog__writer-thumb">
+                    <img src="{{ asset(blog.author.picture) }}" alt="{{ blog.author.getFullName() }}">
+                </div>
+                <div class="blog__writer-designation">
+                    <p>{{ blog.author.getFullName() }}</p>
+                    <span>{{ blog.createdAt|date('d M Y') }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
