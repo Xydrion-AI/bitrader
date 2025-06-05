@@ -1,129 +1,152 @@
-{# templates/partials/blog/_details_content.html.twig #}
-<div class="blog-details__item">
-	<div class="blog-details__item-inner">
+<div
+	class="blog-details__item-inner">
+
+	{# Image principale #}
+	{% if blog.picture %}
 		<div class="blog-details__thumb">
-			<img src="{{ asset('assets/images/blog/details/1.png') }}" alt="blog-image">
-		</div>
-		<div class="blog-details__content">
-			<h3>Advantages of Day Trading</h3>
-			<div class="blog-details__meta">
-				<ul>
-					<li><img src="{{ asset('assets/images/blog/icon/1.png') }}" alt="user">
-						Mobarok Hossain</li>
-					<li><img src="{{ asset('assets/images/blog/icon/2.png') }}" alt="date">
-						April 25, 2023</li>
-					<li>
-						<a href="#"><img src="{{ asset('assets/images/blog/icon/3.png') }}" alt="comments">
-							4 Comments</a>
-					</li>
-				</ul>
-			</div>
-			<p>Lorem ipsum dolor sit amet consectetur. At sed amet viverra etiam elit vivamus ultrices pharetra...</p>
-		</div>
-
-		<div class="blog-details__segment">
-			<div class="row gy-4">
-				<div class="col-xl-6">
-					<img src="{{ asset('assets/images/blog/details/2.png') }}" alt="segment">
-				</div>
-				<div class="col-xl-6">
-					<h5>Short-term investment</h5>
-					<p>Looking to make some quick cash in the market? Short-term investments might be just the ticket...</p>
-				</div>
-				<div class="col-xl-6">
-					<h5>Long-term investment</h5>
-					<p>If you're looking to make some serious cash, a long-term investment is definitely the way to go...</p>
-				</div>
-				<div class="col-xl-6">
-					<img src="{{ asset('assets/images/blog/details/3.png') }}" alt="segment">
-				</div>
+			<div class="blog-details__thumb-inner" data-aos="fade-up" data-aos-duration="800">
+				<img src="{{ asset(blog.picturePath) }}" alt="{{ blog.title }}">
 			</div>
 		</div>
+	{% endif %}
 
-		<div class="blog-details__action">
+	{# Contenu principal #}
+	<div class="blog-details__content">
+		<h3>{{ blog.title }}</h3>
+
+		<div class="blog-details__meta">
+			<ul>
+				<li>
+					<img src="{{ asset('assets/images/blog/icon/1.png') }}" alt="author">
+					{{ blog.author ? blog.author.getFullName() : 'Unknown Author' }}
+				</li>
+				<li>
+					<img src="{{ asset('assets/images/blog/icon/2.png') }}" alt="date">
+					{{ blog.createdAt|date('F j, Y') }}
+				</li>
+				<li>
+					<img src="{{ asset('assets/images/blog/icon/3.png') }}" alt="comments">
+					{{ blog.comments|length }}
+					Comment{{ blog.comments|length > 1 ? 's' : '' }}
+				</li>
+			</ul>
+		</div>
+
+		<p class="mb-0">{{ blog.description|nl2br }}</p>
+	</div>
+
+	<div class="blog-details__content-bottom mt-4" data-aos="fade-up" data-aos-duration="1000">
+		<div
+			class="blog-details__action-inner d-flex justify-content-between align-items-center flex-wrap border-top border-bottom py-3">
+
+			{# TAGS #}
 			<div class="blog-details__tag">
-				<h6>Tags</h6>
-				<ul class="tags tags--style2">
-					<li>
-						<a href="#" class="active">trading</a>
-					</li>
-					<li>
-						<a href="#">investor</a>
-					</li>
-				</ul>
+				<div class="tags tags--style2 d-flex align-items-center gap-2">
+					<h6 class="mb-0 me-2">Tags:</h6>
+					<ul class="d-flex flex-wrap gap-2 mb-0 ps-0">
+						{% for tag in blog.tags|split(',') %}
+							<li>
+								<a href="#" class="active">{{ tag|trim }}</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
 			</div>
+
+			{# SOCIAL SHARE #}
 			<div class="blog-details__social">
-				<h6>Share</h6>
-				<ul class="social">
+				<ul class="social d-flex align-items-center gap-2 mb-0">
 					<li>
-						<a href="#" class="social__link active">
+						<h6 class="mb-0 me-2">Share:</h6>
+					</li>
+					<li>
+						<a href="#" class="social__link social__link--style2 active">
 							<i class="fab fa-facebook-f"></i>
 						</a>
 					</li>
 					<li>
-						<a href="#" class="social__link">
+						<a href="#" class="social__link social__link--style2">
 							<i class="fab fa-instagram"></i>
 						</a>
 					</li>
 					<li>
-						<a href="#" class="social__link">
+						<a href="#" class="social__link social__link--style2">
 							<i class="fab fa-linkedin-in"></i>
 						</a>
 					</li>
 					<li>
-						<a href="#" class="social__link">
+						<a href="#" class="social__link social__link--style2">
 							<i class="fab fa-youtube"></i>
 						</a>
 					</li>
 				</ul>
 			</div>
 		</div>
+	</div>
 
-		<div class="blog-details__comment">
-			<h3>Comments</h3>
-			<ul>
-				<li>
-					<div class="comment__author-thumb">
-						<img src="{{ asset('assets/images/blog/user/3.png') }}" alt="author">
-					</div>
-					<div class="comment__content">
-						<h6>Johanna Erika</h6>
-						<p>Great insights on day trading advantages. Thanks!</p>
+
+	{# Commentaires #}
+	<div class="blog-details__comment mt-5">
+		<h3>{{ blog.comments|length }}
+			Comment{{ blog.comments|length > 1 ? 's' : '' }}</h3>
+		<ul>
+			{% for comment in blog.comments %}
+				<li class="sidebar__comment-item">
+					<div class="comment">
+						<div class="comment__inner">
+							<div class="comment__head">
+								<div class="comment__author">
+									<div class="comment__author-thumb">
+										<img src="{{ asset('assets/images/blog/user/default.png') }}" alt="author">
+									</div>
+									<div class="comment__author-info">
+										<h6 class="mb-0">{{ comment.author }}</h6>
+										<span>{{ comment.createdAt|date('F j, Y H:i') }}</span>
+									</div>
+								</div>
+							</div>
+							<div class="comment__body">
+								<div class="comment__body-inner">
+									<p class="mb-0">{{ comment.content|nl2br }}</p>
+								</div>
+							</div>
+						</div>
 					</div>
 				</li>
+			{% else %}
 				<li>
-					<div class="comment__author-thumb">
-						<img src="{{ asset('assets/images/blog/user/1.png') }}" alt="author">
-					</div>
-					<div class="comment__content">
-						<h6>Tommy Reed</h6>
-						<p>Really enjoyed this post, well structured and clear.</p>
-					</div>
+					<p>No comments yet.</p>
 				</li>
-			</ul>
-		</div>
+			{% endfor %}
+		</ul>
+	</div>
 
-		<div class="blog-details__commentform pt-4">
-			<h3>Leave a Comment</h3>
-			<form action="#" method="post">
-				<div class="row g-4">
-					<div class="col-md-6">
-						<label for="name">Name</label>
-						<input id="name" name="name" class="form-control" required>
-					</div>
-					<div class="col-md-6">
-						<label for="email">Email</label>
-						<input type="email" id="email" name="email" class="form-control" required>
-					</div>
-					<div class="col-md-12">
-						<label for="message">Message</label>
-						<textarea id="message" name="message" rows="5" class="form-control" required></textarea>
-					</div>
-					<div class="col-md-12">
-						<button class="trk-btn trk-btn--primary mt-2" type="submit">Send message</button>
-					</div>
+	{# Formulaire #}
+	<div class="blog-details__commentform" data-aos="fade-up" data-aos-duration="1000">
+		<div class="sidebar">
+			<div class="sidebar__commentform" id="post">
+				<div class="sidebar__head">
+					<h3>Leave A Comment</h3>
 				</div>
-			</form>
+				<div class="sidebar__commentform-body pt-25">
+					{{ form_start(commentForm) }}
+					<div class="row g-4">
+						<div class="col-md-6">
+							{{ form_row(commentForm.author) }}
+						</div>
+						<div class="col-md-6">
+							{{ form_row(commentForm.email) }}
+						</div>
+						<div class="col-md-12">
+							{{ form_row(commentForm.content) }}
+						</div>
+						<div class="col-md-12">
+							<button type="submit" class="trk-btn trk-btn--border trk-btn--primary mt-4">Send message</button>
+						</div>
+					</div>
+					{{ form_end(commentForm) }}
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
