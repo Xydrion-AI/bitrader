@@ -38,39 +38,76 @@
 		</ul>
 	</div>
 
-	<div class="sidebar__recentpost mb-4">
-		<h6>Recent Posts</h6>
-		<ul>
-			<li>
-				<a href="#">
-					<img src="{{ asset('assets/images/blog/recent/1.png') }}" alt="recent">
-					Real Estate Investing
-				</a>
-				<span>Dec 22, 2023</span>
-			</li>
-			<li>
-				<a href="#">
-					<img src="{{ asset('assets/images/blog/recent/2.png') }}" alt="recent">
-					Technical analysis
-				</a>
-				<span>July 28, 2023</span>
-			</li>
-			<li>
-				<a href="#">
-					<img src="{{ asset('assets/images/blog/recent/3.png') }}" alt="recent">
-					Trading risk tolerance
-				</a>
-				<span>May 18, 2023</span>
-			</li>
-			<li>
-				<a href="#">
-					<img src="{{ asset('assets/images/blog/recent/4.png') }}" alt="recent">
-					Harmonic price pattern
-				</a>
-				<span>Feb 16, 2023</span>
-			</li>
-		</ul>
+	<div class="sidebar__recentpost mb-4" data-aos="fade-up" data-aos-duration="1000">
+		<div class="sidebar__head">
+			<h6>Recent Posts</h6>
+		</div>
+		<div class="sidebar__recentpost-body">
+			<ul>
+				<li>
+					<div class="sidebar__recentpost-item">
+						<div class="sidebar__recentpost-inner">
+							<div class="sidebar__recentpost-thumb">
+								<a href="#"><img src="{{ asset('assets/images/blog/recent/1.png') }}" alt="recent"></a>
+							</div>
+							<div class="sidebar__recentpost-content">
+								<p>
+									<a href="#">Real Estate Investing</a>
+								</p>
+								<span>Dec 22, 2023</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar__recentpost-item">
+						<div class="sidebar__recentpost-inner">
+							<div class="sidebar__recentpost-thumb">
+								<a href="#"><img src="{{ asset('assets/images/blog/recent/2.png') }}" alt="recent"></a>
+							</div>
+							<div class="sidebar__recentpost-content">
+								<p>
+									<a href="#">Technical analysis</a>
+								</p>
+								<span>July 28, 2023</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar__recentpost-item">
+						<div class="sidebar__recentpost-inner">
+							<div class="sidebar__recentpost-thumb">
+								<a href="#"><img src="{{ asset('assets/images/blog/recent/3.png') }}" alt="recent"></a>
+							</div>
+							<div class="sidebar__recentpost-content">
+								<p>
+									<a href="#">Trading risk tolerance</a>
+								</p>
+								<span>May 18, 2023</span>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="sidebar__recentpost-item">
+						<div class="sidebar__recentpost-inner">
+							<div class="sidebar__recentpost-thumb">
+								<a href="#"><img src="{{ asset('assets/images/blog/recent/4.png') }}" alt="recent"></a>
+							</div>
+							<div class="sidebar__recentpost-content">
+								<p>
+									<a href="#">Harmonic price pattern</a>
+								</p>
+								<span>Feb 16, 2023</span>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
 	</div>
+
 
 	<div class="sidebar__tags">
 		<h6>Popular Tags</h6>

@@ -21,9 +21,6 @@ class Comment
     private ?\DateTimeImmutable $created_at = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $author = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
     private ?string $email = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
@@ -33,6 +30,9 @@ class Comment
     #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(nullable: true)]
     private ?User $user = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $authorName = null;
 
     public function getId(): ?int
     {
@@ -61,20 +61,8 @@ class Comment
         return $this;
     }
 
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(?string $author): static
-    {
-        $this->author = $author;
-        return $this;
-    }
-
     public function getEmail(): ?string
     {
-        // Si l'utilisateur est connecté, retourne son email
         if ($this->user !== null) {
             return $this->user->getEmail();
         }
@@ -107,6 +95,17 @@ class Comment
     public function setUser(?User $user): static
     {
         $this->user = $user;
+        return $this;
+    }
+
+    public function getAuthorName(): ?string
+    {
+        return $this->authorName;
+    }
+
+    public function setAuthorName(?string $authorName): static
+    {
+        $this->authorName = $authorName;
         return $this;
     }
 }

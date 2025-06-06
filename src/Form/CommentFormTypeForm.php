@@ -15,26 +15,32 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class CommentFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
+{
+    $user = $options['user'];
+
+    if (!$user) {
         $builder
-            ->add('author', TextType::class, [
+            ->add('authorName', TextType::class, [
                 'label' => 'Name',
                 'attr' => ['placeholder' => 'Full Name', 'class' => 'form-control'],
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Email',
                 'attr' => ['placeholder' => 'Email here', 'class' => 'form-control'],
-            ])
-            ->add('content', TextareaType::class, [
-                'label' => 'Message',
-                'attr' => ['placeholder' => 'Enter Your Message', 'class' => 'form-control', 'rows' => 5],
             ]);
     }
+
+    $builder->add('content', TextareaType::class, [
+        'label' => 'Message',
+        'attr' => ['placeholder' => 'Enter Your Message', 'class' => 'form-control', 'rows' => 5],
+    ]);
+}
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Comment::class,
+            'user' => null,
         ]);
     }
 }

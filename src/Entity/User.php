@@ -178,4 +178,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->updatedAt = new \DateTimeImmutable();
     }
+
+    public function getPicturePath(): string
+    {
+        return $this->picture 
+            ? 'assets/images/blog/' . $this->picture 
+            : 'assets/images/blog/default-user.png';
+    }
 }

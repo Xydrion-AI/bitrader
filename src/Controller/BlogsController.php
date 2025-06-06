@@ -52,10 +52,17 @@ final class BlogsController extends AbstractController
         $comment->setBlog($blog);
         $comment->setCreatedAt(new \DateTimeImmutable());
 
-        $form = $this->createForm(CommentFormType::class, $comment);
+        $form = $this->createForm(CommentFormType::class, $comment, [
+            'user' => $this->getUser(),
+        ]);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($this->getUser()) {
+                $comment->setUser($this->getUser());
+            }
+
             $em->persist($comment);
             $em->flush();
 

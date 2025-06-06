@@ -97,10 +97,12 @@
 							<div class="comment__head">
 								<div class="comment__author">
 									<div class="comment__author-thumb">
-										<img src="{{ asset('assets/images/blog/user/default.png') }}" alt="author">
+										<img src="{{ asset(comment.user ? comment.user.getPicture : 'assets/images/blog/default-user.png') }}" alt="author" class="rounded-circle" width="40" height="40">
 									</div>
 									<div class="comment__author-info">
-										<h6 class="mb-0">{{ comment.author }}</h6>
+										<h6 class="mb-0">
+											{{ comment.user ? comment.user.fullName : comment.authorName }}
+										</h6>
 										<span>{{ comment.createdAt|date('F j, Y H:i') }}</span>
 									</div>
 								</div>
@@ -122,31 +124,35 @@
 	</div>
 
 	{# Formulaire #}
-	<div class="blog-details__commentform" data-aos="fade-up" data-aos-duration="1000">
-		<div class="sidebar">
-			<div class="sidebar__commentform" id="post">
-				<div class="sidebar__head">
-					<h3>Leave A Comment</h3>
+	<div class="sidebar__commentform-body pt-25">
+		{{ form_start(commentForm) }}
+		<div class="row g-4">
+			{% if not app.user %}
+				<div class="col-md-6">
+					{{ form_row(commentForm.authorName) }}
 				</div>
-				<div class="sidebar__commentform-body pt-25">
-					{{ form_start(commentForm) }}
-					<div class="row g-4">
-						<div class="col-md-6">
-							{{ form_row(commentForm.author) }}
-						</div>
-						<div class="col-md-6">
-							{{ form_row(commentForm.email) }}
-						</div>
-						<div class="col-md-12">
-							{{ form_row(commentForm.content) }}
-						</div>
-						<div class="col-md-12">
-							<button type="submit" class="trk-btn trk-btn--border trk-btn--primary mt-4">Send message</button>
-						</div>
+				<div class="col-md-6">
+					{{ form_row(commentForm.email) }}
+				</div>
+			{% else %}
+				<div class="col-md-12 d-flex align-items-center gap-3 mb-3 bg-light p-3 rounded">
+					<img src="{{ asset(app.user.getPicture) }}" alt="user" class="rounded-circle" width="40" height="40">
+					<div>
+						<strong class="text-dark">{{ app.user.fullName }}</strong><br>
+						<small class="text-muted">{{ app.user.email }}</small>
 					</div>
-					{{ form_end(commentForm) }}
 				</div>
+			{% endif %}
+
+			<div class="col-md-12">
+				{{ form_row(commentForm.content) }}
+			</div>
+
+			<div class="col-md-12">
+				<button type="submit" class="trk-btn trk-btn--border trk-btn--primary mt-4">Send message</button>
 			</div>
 		</div>
+		{{ form_end(commentForm) }}
 	</div>
+
 </div>
